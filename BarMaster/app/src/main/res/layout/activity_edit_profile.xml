@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.perfil.EditProfile"
+    android:background="@color/Black">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingEnd="50dp"
+            android:paddingStart="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="45dp"
+                android:contentDescription="TODO"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logfoto"></ImageView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/mifotomodi"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:civ_border_width="5dp"
+                app:civ_border_color="#FFFFFF"
+                android:layout_gravity="top|center"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:id="@+id/nicknamemodi"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/namemodi"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Family Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/familynamemodi"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Mail"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/correomodi"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <Button
+                android:layout_marginVertical="15dp"
+                android:id="@+id/confirmodi"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Confirmar"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"
+                ></Button>
+
+            <Button
+                android:id="@+id/changpictmodi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Change Profile \n photo"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"></Button>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/skipmodi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Go Back"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"></Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

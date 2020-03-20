@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bar Master</string>
+
+
+    <string name="title_home">Home</string>
+    <string name="title_rutinas">Rutinas</string>
+    <string name="title_comunidad">Community</string>
+    <string name="title_perfil">Perfil</string>
+</resources>

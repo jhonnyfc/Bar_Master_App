@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navi"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.barmaster.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_rutinas"
+        android:name="com.example.barmaster.ui.rutinasGrupos.RutinasGRFragment"
+        android:label="@string/title_rutinas"
+        tools:layout="@layout/rutinas_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_comunidad"
+        android:name="com.example.barmaster.ui.comunidad.ComunidadFragment"
+        android:label="@string/title_comunidad"
+        tools:layout="@layout/comunidad_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_perfil"
+        android:name="com.example.barmaster.ui.perfil.PerfilFragment"
+        android:label="@string/title_perfil"
+        tools:layout="@layout/perfil_fragment" />
+</navigation>

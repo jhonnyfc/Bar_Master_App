@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.perfil.ValidacionKey"
+    android:background="@color/Black">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingEnd="50dp"
+            android:paddingStart="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="TODO"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logfoto"></ImageView>
+
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Write your passwrod to \nvalidate your credential"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:layout_marginBottom="25dp"></TextView>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PassWord"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/passwordvali"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <Button
+                android:id="@+id/confirvali"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Confirmar"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"
+                android:onClick="pushWord"
+                ></Button>
+
+            <Button
+                android:layout_marginTop="0dp"
+                android:id="@+id/skivali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Go Back"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"
+                android:onClick="goBack"></Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

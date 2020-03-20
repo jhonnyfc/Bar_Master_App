@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    tools:context=".ui.CreratAccount">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingEnd="50dp"
+            android:paddingStart="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/logfoto"></ImageView>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/nicknamereg"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/namereg"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Family Name"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/familynamereg"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:id="@+id/passwordreg"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true"
+                android:inputType="textPassword"></EditText>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Mail"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"></TextView>
+
+            <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/correoreg"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:singleLine="true" ></EditText>
+
+            <Button
+                android:id="@+id/confirmarreg"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Confirmar"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"
+                ></Button>
+
+            <Button
+                android:id="@+id/skipreg"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Skip"
+                android:background="@color/Black"
+                android:textColor="@color/colorLetras"
+                android:textSize="20dp"></Button>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

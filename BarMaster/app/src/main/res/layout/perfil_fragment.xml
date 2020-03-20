@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.perfil.PerfilFragment">
+
+    <TextView
+        android:id="@+id/texthome"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/title_perfil"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetras"
+        android:textSize="40sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:id="@+id/acctionbtperf">
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_expandDirection="down"
+            app:fab_addButtonColorNormal="@color/Black"
+            app:fab_addButtonColorPressed="#2C2C2C"
+            android:id="@+id/accbtft">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_dataconfig"
+                app:fab_colorNormal="@color/Black"
+                app:fab_colorPressed="#2C2C2C"
+                android:id="@+id/setingbtft"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_logout"
+                app:fab_colorNormal="@color/Black"
+                app:fab_colorPressed="#2C2C2C"
+                android:id="@+id/logoutbtft"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="67dp"
+        android:layout_marginBottom="58dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <LinearLayout
+            android:id="@+id/contentdataperf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/mifotoperf"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                app:civ_border_width="5dp"
+                app:civ_border_color="#FFFFFF"
+                android:layout_gravity="top|center"/>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="25dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="30dp"
+                android:background="@drawable/linearraidus"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="26dp"
+                        android:text="Nickname:  "
+                        android:textColor="@color/Black"></TextView>
+
+                    <TextView
+                        android:id="@+id/nicknameperf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textColor="@color/Black"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="26dp"
+                        android:text="Name:  "
+                        android:textColor="@color/Black"></TextView>
+
+                    <TextView
+                        android:id="@+id/nameperf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textColor="@color/Black"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="26dp"
+                        android:text="E-mail:  "
+                        android:textColor="@color/Black"></TextView>
+
+                    <TextView
+                        android:id="@+id/correoperf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textColor="@color/Black"></TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
