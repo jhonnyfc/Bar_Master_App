@@ -7,3 +7,4 @@
 - https://docs.parseplatform.org/android/guide/
 - https://stackoverflow.com/questions/39596994/unable-to-save-data-on-heroku-in-android-studio
 - https://www.programcreek.com/java-api-examples/?api=com.parse.ParseQuery
+- http://docs.parseplatform.org/rest/guide/#files
