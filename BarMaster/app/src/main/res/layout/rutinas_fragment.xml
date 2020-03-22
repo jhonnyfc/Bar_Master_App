@@ -16,7 +16,16 @@
         android:textColor="@color/colorLetras"
         android:textSize="40sp"/>
 
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/loadmore_progress"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+
     <LinearLayout
+        android:visibility="invisible"
+        android:id="@+id/containergruprut"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -30,7 +39,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lista_grupos"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>

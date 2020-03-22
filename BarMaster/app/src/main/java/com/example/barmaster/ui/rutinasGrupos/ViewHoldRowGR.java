@@ -11,7 +11,7 @@ import com.example.barmaster.R;
 
 public class ViewHoldRowGR extends RecyclerView.ViewHolder {
     public TextView grupName;
-    public ImageView grupFoto;
+    ImageView grupFoto;
     private ProgressBar mProgress;
 
     public ViewHoldRowGR(View itemView, final RecyViwAdapterGR.OnItemClickListener listener) {

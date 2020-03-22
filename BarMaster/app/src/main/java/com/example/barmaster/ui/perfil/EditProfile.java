@@ -1,10 +1,15 @@
 package com.example.barmaster.ui.perfil;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +24,11 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class EditProfile extends Activity implements View.OnClickListener{
     private static final int SHOW_SUBACTIVITY = 1;
@@ -73,6 +83,7 @@ public class EditProfile extends Activity implements View.OnClickListener{
         confirmarBt.setOnClickListener(this);
         goBackBt.setOnClickListener(this);
         changPhBt.setOnClickListener(this);
+
     }
 
     @Override
@@ -86,11 +97,33 @@ public class EditProfile extends Activity implements View.OnClickListener{
                 goBack();
                 break;
             case R.id.changpictmodi:// Creac accion camiar foto
+                changeFoto();
                 break;
             default:
                 break;
         }
     }
+
+    public void changeFoto(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED){
+                String[] permisos = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                requestPermissions(permisos,14);
+            }else{
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1,1)
+                        .start(EditProfile.this);
+            }
+        }else{
+            CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,1)
+                    .start(EditProfile.this);
+        }
+    }
+
 
     public void goBack(){
         startActivity(new Intent(getApplicationContext(), Controlador_Activity.class));
@@ -116,27 +149,39 @@ public class EditProfile extends Activity implements View.OnClickListener{
         startActivityForResult(new Intent(this, ValidacionKey.class),SHOW_SUBACTIVITY);
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_FROM_CHANGE_FOTO_OK){
-            //Cabio de datos de la foto
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-        }else if (requestCode == RESULT_FROM_CHANGE_FOTO_NOOK){
-            Toast.makeText(getApplicationContext(), "Error al cargar foto", Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK){
+                Uri myNewFotoUri = result.getUri();
+                perfilView.setImageURI(myNewFotoUri);
+                mifoto = getBitMapFromUri(myNewFotoUri);
+            }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                Toast.makeText(getApplicationContext(), "Error al cargar foto", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Error al cargar foto", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        if (resultCode == Activity.RESULT_OK) {
+        if (requestCode != CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             Bundle bundle = data.getExtras();
             String contraseñaValidacion = bundle.getString("contraseña");
 
-            if (resultCode == RESULT_OK) {
+            if (resultCode == resultCode) {
                 if (contraseñaValidacion.equals(myDataControler.getMyData().getPassWord())) {
                     Toast.makeText(getApplicationContext(), "Contraseña correcta", Toast.LENGTH_SHORT).show();
 
+
                     //Aculaizar los datos
+                    ParseFile photoFile = new ParseFile("perfilFoto.jpg", getByteFromBitMap(mifoto));
+
                     final ParseUser usuarioAcual = ParseUser.getCurrentUser();
                     usuarioAcual.setEmail(correoInTx.getText().toString());
                     usuarioAcual.put("name",nameInTx.getText().toString());
                     usuarioAcual.put("familyname",faminameInTx.getText().toString());
+                    usuarioAcual.put("foto",photoFile);
 
                     usuarioAcual.saveInBackground(new SaveCallback() {
                         @Override
@@ -158,6 +203,47 @@ public class EditProfile extends Activity implements View.OnClickListener{
                     Toast.makeText(getApplicationContext(), "Contrseña erronea", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    public byte[] getByteFromBitMap(Bitmap bitmap){
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);// can use something 70 in case u want to compress the image
+
+        return stream.toByteArray();
+    }
+
+    public Bitmap getBitMapFromUri(Uri myuri){
+        try {
+            return MediaStore.Images.Media.getBitmap(this.getContentResolver(), myuri);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 14: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
+                            .setAspectRatio(1,1)
+                            .start(EditProfile.this);
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(getApplicationContext(), "No se ha concedido los Permisos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
         }
     }
 }

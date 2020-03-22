@@ -1,11 +1,11 @@
 package com.example.barmaster.ui.rutinasGrupos;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 import com.example.barmaster.sharedData.MyAppDataControler;
+import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -32,9 +32,11 @@ public class RutinasGRFragment extends Fragment {
     private RecyViwAdapterGR myAdapterGr;
     private RecyclerView.LayoutManager myLayoutManager;
 
-
-    private List<ParseObject> miLista;
     private Integer valUser;
+
+    private ProgressBar myProgrssBar;
+
+    private LinearLayout miContainer;
 
     public static RutinasGRFragment newInstance() {
         return new RutinasGRFragment();
@@ -52,9 +54,13 @@ public class RutinasGRFragment extends Fragment {
             valUser = 6;
         }
 
-        myRecyListCards = new ArrayList<>();
-        myRecyListCards.add(0,getElemntCardBBDD(0,"GrupoMuscular"));
+        miContainer = rootOut.findViewById(R.id.containergruprut);
 
+        myProgrssBar = rootOut.findViewById(R.id.loadmore_progress);
+        myProgrssBar.setVisibility(View.VISIBLE);
+
+        myRecyListCards = new ArrayList<>();
+        myRecyListCards.add(new CardRowDataModelGR( null,"Loading..."));
         myRecyclerView = rootOut.findViewById(R.id.lista_grupos);
         myRecyclerView.setHasFixedSize(true);
         myLayoutManager = new LinearLayoutManager(getActivity());
@@ -78,54 +84,37 @@ public class RutinasGRFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //mViewModel = ViewModelProviders.of(this).get(RutinasViewModel.class);
         // TODO: Use the ViewModel
-//        if (myRecyListCards.size() == 1)
-//            insertAll("GrupoMuscular");
-//        actualizaRows();
+        myRecyListCards.remove(0);
+        myAdapterGr.notifyItemRemoved(0);
+        getElemntCardBBDDAllFastONE("GrupoMuscular");
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        insertAll("GrupoMuscular");
-    }
-
-    public void insertAll(String tableName){
-        for (int i = 1; i < valUser; i++) {//Añadir de las tarjeta uno a uno
-            myRecyListCards.add(i,getElemntCardBBDD(i,tableName));
-            myAdapterGr.notifyItemInserted(i);
-        }
-    }
-
-    public CardRowDataModelGR getElemntCardBBDD (Integer i,String tableName){
+    public void getElemntCardBBDDAllFastONE (String tableName){
         ParseQuery<ParseObject> query = ParseQuery.getQuery(tableName);
-        query.whereEqualTo("id_gr",i.toString());
-
-        ParseObject miCardData = null;
-        try {
-            miCardData = query.getFirst();
-
-            String id_img = miCardData.get("im_code").toString();
-            return new CardRowDataModelGR(getBitmapFromUser(id_img),miCardData.get("grup_name").toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+        query.orderByAscending("id_gr");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                miContainer.setVisibility(View.VISIBLE);
+                for (int i = 0; i < valUser; i++) {
+                    String id_img = objects.get(i).get("im_code").toString();
+                    myRecyListCards.add(i,new CardRowDataModelGR(getUrlFromGrupFoto(id_img), objects.get(i).get("grup_name").toString()));
+                    myAdapterGr.notifyItemInserted(i);
+                }
+                myProgrssBar.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
-
-    public static Bitmap getBitmapFromUser(String idFile) {
+    public static String getUrlFromGrupFoto(String idFile) {
         String tableName = "FotosAll";
         ParseQuery<ParseObject> query = ParseQuery.getQuery(tableName);
 
         query.whereEqualTo("fotoName",idFile);
 
         try {
-            ParseObject object = query.getFirst();
+            return query.getFirst().getParseFile("picture").getUrl();
 
-            ParseFile mifile = object.getParseFile("picture");
-            byte [] blob = mifile.getData();
-
-            return BitmapFactory.decodeByteArray(blob, 0, blob.length);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;

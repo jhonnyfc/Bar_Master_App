@@ -28,7 +28,7 @@ public class ValidacionKey extends Activity{
         if (message.compareTo("") != 0) { //0 if is equal
             Bundle bundle = new Bundle();
             bundle.putString("contraseña", message);
-            setResult(RESULT_OK,new Intent().putExtras(bundle));
+            setResult(13,new Intent().putExtras(bundle));
             finish();
         }else{
             Toast.makeText(this, "Introduzca su contraseña", Toast.LENGTH_SHORT).show();

@@ -55,7 +55,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
             final TextView txtlViewName = root.findViewById(R.id.nameperf);
             final TextView txtlViewCorreo = root.findViewById(R.id.correoperf);
             containerData = root.findViewById(R.id.contentdataperf);
-            containerData.setVisibility(View.INVISIBLE);
+//            containerData.setVisibility(View.INVISIBLE);
 
             miViewModelPerfil.getMiFoto().observe(getViewLifecycleOwner(), new Observer<Bitmap>() {
                 @Override

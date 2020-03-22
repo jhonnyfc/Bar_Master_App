@@ -1,17 +1,15 @@
 package com.example.barmaster.ui.rutinasGrupos;
 
-import android.graphics.Bitmap;
-
 public class CardRowDataModelGR {
-    private Bitmap imageId;
+    private String imageId;
     private String titleId;
 
-    public CardRowDataModelGR(Bitmap imageId, String titleId) {
+    public CardRowDataModelGR(String imageId, String titleId) {
         this.imageId = imageId;
         this.titleId = titleId;
     }
 
-    public Bitmap getImageId() {
+    public String getImageId() {
         return imageId;
     }
 

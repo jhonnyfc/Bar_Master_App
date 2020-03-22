@@ -1,5 +1,6 @@
 package com.example.barmaster.ui.rutinasGrupos;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,11 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.barmaster.R;
 
 import java.util.ArrayList;
 
 public class RecyViwAdapterGR extends RecyclerView.Adapter<ViewHoldRowGR> {
+    private Context myContext;
     private ArrayList<CardRowDataModelGR> listOfRows;
     private OnItemClickListener myListener;
 
@@ -23,6 +27,7 @@ public class RecyViwAdapterGR extends RecyclerView.Adapter<ViewHoldRowGR> {
     @Override
     public ViewHoldRowGR onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewHoldRowGR myViewHolder = null;
+        myContext = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         //        switch (viewType) {
@@ -43,8 +48,20 @@ public class RecyViwAdapterGR extends RecyclerView.Adapter<ViewHoldRowGR> {
     public void onBindViewHolder(ViewHoldRowGR holder, int position) {
         CardRowDataModelGR currentItem = listOfRows.get(position);
 
-        holder.grupFoto.setImageBitmap(currentItem.getImageId());
-        holder.grupName.setText(currentItem.getTitle());
+        if (currentItem.getImageId() == null){
+            holder.grupName.setText(currentItem.getTitle());
+            holder.grupFoto.setImageBitmap(null);
+        }else {
+            holder.grupName.setText(currentItem.getTitle());
+
+
+        RequestOptions requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.progresspiner).error(R.drawable.progresspiner);
+
+            Glide.with(myContext)
+                    .load(currentItem.getImageId())
+                    .apply(requestOptions)
+                    .into(holder.grupFoto);
+        }
     }
 
     @Override

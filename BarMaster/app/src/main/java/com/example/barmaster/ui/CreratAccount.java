@@ -69,16 +69,8 @@ public class CreratAccount extends AppCompatActivity implements View.OnClickList
     }
 
     public void confirmar (){
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.dfaultperfilph);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);// can use something 70 in case u want to compress the image
-
-        byte[] scaledData = stream.toByteArray();
-
-        ParseFile photoFile = new ParseFile("perfilFoto.jpg", scaledData);
-
         try {
+            ParseFile photoFile = new ParseFile("perfilFoto.jpg", getDefualtByteFoto());
             photoFile.save();
 
             final Usuario nuevoUser = new Usuario(nickInTx.getText().toString(),
@@ -116,6 +108,14 @@ public class CreratAccount extends AppCompatActivity implements View.OnClickList
 
     public void skip(){
         startActivity(new Intent(this, Controlador_Activity.class));
+    }
+
+    public byte[] getDefualtByteFoto(){
+        Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.dfaultperfilph);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);// can use something 70 in case u want to compress the image
+
+        return stream.toByteArray();
     }
 }
 
