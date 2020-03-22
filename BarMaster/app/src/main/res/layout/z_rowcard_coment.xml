@@ -17,13 +17,14 @@
             android:orientation="vertical"
             android:background="#000000">
             <TextView
+                android:id="@+id/namepost"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NombreCreador"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:textColor="@color/colorLetras"></TextView>
 
             <LinearLayout
@@ -78,7 +79,7 @@
                         android:textSize="10dp"
                         android:text="Aqui su descripcion maximo 120 caracteres"
                         android:textColor="@color/colorLetras"
-                        android:id="@+id/textcomment"></TextView>
+                        android:id="@+id/textcommentpost"></TextView>
                 </LinearLayout>
             </LinearLayout>
 

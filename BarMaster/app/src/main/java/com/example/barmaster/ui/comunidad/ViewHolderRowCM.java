@@ -1,23 +1,26 @@
-package com.example.barmaster.ui.rutinasGrupos;
+package com.example.barmaster.ui.comunidad;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 
-public class ViewHoldRowGR extends RecyclerView.ViewHolder {
-    public TextView grupName;
-    public ImageView grupFoto;
-    private ProgressBar mProgress;
+public class ViewHolderRowCM extends RecyclerView.ViewHolder{
+    public TextView niknName;
+    public ImageView fotTrain;
+    public TextView likeCounter;
+    public TextView postTExt;
 
-    public ViewHoldRowGR(View itemView, final RecyViwAdapterGR.OnItemClickListener listener) {
+    public ViewHolderRowCM(@NonNull View itemView, final RecyViwAdapterCM.OnItemClickListener listener) {
         super(itemView);
-        grupName = itemView.findViewById(R.id.textoCardRow);
-        grupFoto = itemView.findViewById(R.id.fotoCardRow);
+        niknName = itemView.findViewById(R.id.namepost);
+        fotTrain = itemView.findViewById(R.id.fotopost);
+        likeCounter = itemView.findViewById(R.id.likesnumberpost);
+        postTExt = itemView.findViewById(R.id.textcommentpost);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
