@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
+import com.example.barmaster.models.GrupoMuscularRutina;
 import com.example.barmaster.sharedData.MyAppDataControler;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,7 +28,7 @@ public class RutinasGRFragment extends Fragment {
 
     private RutinasGRViewModel mViewModel;
 
-    private ArrayList<CardRowDataModelGR> myRecyListCards;
+    private ArrayList<GrupoMuscularRutina> myRecyListCards;
     private RecyclerView myRecyclerView;
     private RecyViwAdapterGR myAdapterGr;
     private RecyclerView.LayoutManager myLayoutManager;
@@ -60,7 +61,8 @@ public class RutinasGRFragment extends Fragment {
         myProgrssBar.setVisibility(View.VISIBLE);
 
         myRecyListCards = new ArrayList<>();
-        myRecyListCards.add(new CardRowDataModelGR( null,"Loading..."));
+        myRecyListCards.add(new GrupoMuscularRutina( null,"Loading..."));
+
         myRecyclerView = rootOut.findViewById(R.id.lista_grupos);
         myRecyclerView.setHasFixedSize(true);
         myLayoutManager = new LinearLayoutManager(getActivity());
@@ -98,7 +100,7 @@ public class RutinasGRFragment extends Fragment {
                 miContainer.setVisibility(View.VISIBLE);
                 for (int i = 0; i < valUser; i++) {
                     String id_img = objects.get(i).get("im_code").toString();
-                    myRecyListCards.add(i,new CardRowDataModelGR(getUrlFromGrupFoto(id_img), objects.get(i).get("grup_name").toString()));
+                    myRecyListCards.add(i,new GrupoMuscularRutina(getUrlFromGrupFoto(id_img), objects.get(i).get("grup_name").toString()));
                     myAdapterGr.notifyItemInserted(i);
                 }
                 myProgrssBar.setVisibility(View.INVISIBLE);

@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_comunidad"
-        android:name="com.example.barmaster.ui.comunidad.ComunidadFragment"
+        android:name="com.example.barmaster.ui.comunidad.ComunidadCMFragment"
         android:label="@string/title_comunidad"
         tools:layout="@layout/comunidad_fragment" />
 

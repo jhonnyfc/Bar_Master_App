@@ -1,21 +1,27 @@
 package com.example.barmaster.models;
 
+import java.util.Date;
+
 public class Post {
+    private String idObjeto;
     private String idCreator;
     private String rutinaName;
-    private Integer duration;
+    private Float duration;
     private String comment;
     private String fotoPostUrl;
-    private String likes;      //Para la obtencionde de este dato se hara una cuneta sobre la tabla Likes
+    private String likesId;      //Para la obtencionde de este dato se hara una cuneta sobre la tabla Likes
                                 //que contendra todos los liques por foto con un identificador
+    private Date fecha;
 
-    public Post(String idCreator, String rutinaName, Integer duration, String comment, String fotoPostUrl,String likes){
+    public Post(String idObjeto,String idCreator, String rutinaName, Float duration, String comment, String fotoPostUrl,String likesId, Date fecha){
+        this.idObjeto = idObjeto;
         this.idCreator = idCreator;
         this.rutinaName = rutinaName;
         this.duration = duration;
         this.comment = comment;
         this.fotoPostUrl = fotoPostUrl;
-        this.likes = likes;
+        this.likesId = likesId;
+        this.fecha = fecha;
     }
 
     public String getRutinaName() {
@@ -34,11 +40,11 @@ public class Post {
         this.idCreator = idCreator;
     }
 
-    public Integer getDuration() {
+    public Float getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(Float duration) {
         this.duration = duration;
     }
 
@@ -58,11 +64,27 @@ public class Post {
         this.fotoPostUrl = fotoPostUrl;
     }
 
-    public String getLikes() {
-        return likes;
+    public String getLikesId() {
+        return likesId;
     }
 
-    public void setLikes(String likes) {
-        this.likes = likes;
+    public void setLikesId(String likesId) {
+        this.likesId = likesId;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getIdObjeto() {
+        return idObjeto;
+    }
+
+    public void setIdObjeto(String idObjeto) {
+        this.idObjeto = idObjeto;
     }
 }

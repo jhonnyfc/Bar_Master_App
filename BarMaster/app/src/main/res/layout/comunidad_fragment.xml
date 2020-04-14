@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.comunidad.ComunidadFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.comunidad.ComunidadCMFragment">
 
     <TextView
         android:id="@+id/texthome"
@@ -27,10 +28,24 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_gravity="center"
             android:id="@+id/lista_post"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:backgroundTint="@color/Black"
+        android:src="@drawable/ic_add_black_24dp"
+        android:id="@+id/fbotadd_post"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>

@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.barmaster.R;
+import com.example.barmaster.models.GrupoMuscularRutina;
 
 import java.util.ArrayList;
 
 public class RecyViwAdapterGR extends RecyclerView.Adapter<ViewHoldRowGR> {
     private Context myContext;
-    private ArrayList<CardRowDataModelGR> listOfRows;
+    private ArrayList<GrupoMuscularRutina> listOfRows;
     private OnItemClickListener myListener;
 
-    public RecyViwAdapterGR(ArrayList<CardRowDataModelGR> listaIn) {
+    public RecyViwAdapterGR(ArrayList<GrupoMuscularRutina> listaIn) {
         listOfRows = listaIn;
     }
 
@@ -46,7 +47,7 @@ public class RecyViwAdapterGR extends RecyclerView.Adapter<ViewHoldRowGR> {
 
     @Override
     public void onBindViewHolder(ViewHoldRowGR holder, int position) {
-        CardRowDataModelGR currentItem = listOfRows.get(position);
+        GrupoMuscularRutina currentItem = listOfRows.get(position);
 
         if (currentItem.getImageId() == null){
             holder.grupName.setText(currentItem.getTitle());

@@ -20,11 +20,11 @@
                 android:id="@+id/namepost"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NombreCreador"
-                android:textSize="15dp"
+                android:textSize="18sp"
                 android:textColor="@color/colorLetras"></TextView>
 
             <LinearLayout
@@ -33,56 +33,85 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
                     <ImageView
-                        android:foreground="@drawable/linearraidusfotos"
                         android:id="@+id/fotopost"
-                        android:layout_width="396dp"
-                        android:layout_height="297dp"
-                        android:src="@drawable/fondo2"/>
+                        android:layout_width="350dp"
+                        android:layout_height="262.5dp"
+                        android:src="@drawable/fondo2"
+                        android:foreground="@drawable/badheart"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="25dp"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="20dp"
+                        android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_toggle_star_24"
                         android:tint="#FF0000"></ImageView>
                     <TextView
                         android:id="@+id/likesnumberpost"
                         android:layout_gravity="bottom"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:textSize="8dp"
+                        android:textSize="10sp"
                         android:text="0"
                         android:textColor="@color/colorLetras"></TextView>
+
+                    <TextView
+                        android:textSize="14sp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@color/colorLetras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Duracion"
+                        android:id="@+id/duracion_post"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="11dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="15dp"
                     android:orientation="vertical">
                     <TextView
+                        android:layout_gravity="bottom"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorLetras"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10dp"
+                        android:text="TrainName"
+                        android:id="@+id/nametrain_post"></TextView>
+
+                    <TextView
+                        android:layout_marginTop="9dp"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
                         android:text="Aqui su descripcion maximo 120 caracteres"
                         android:textColor="@color/colorLetras"
                         android:id="@+id/textcommentpost"></TextView>
+
+                    <TextView
+                        android:layout_marginTop="11dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="15 min ago"
+                        android:textColor="@color/colorLetras"
+                        android:id="@+id/fechaTimepost"></TextView>
                 </LinearLayout>
             </LinearLayout>
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

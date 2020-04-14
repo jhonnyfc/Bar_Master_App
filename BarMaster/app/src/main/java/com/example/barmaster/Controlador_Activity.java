@@ -37,14 +37,16 @@ public class Controlador_Activity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_rutinas, R.id.navigation_comunidad, R.id.navigation_perfil).build();
+                        R.id.navigation_home, R.id.navigation_rutinas, R.id.navigation_comunidad, R.id.navigation_perfil)
+                    .build();
 
         // Creacion de la vista tipo frgamento creada
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.saveState();
 
         // Asigcacion de los titulos a las barras se ha quitado dado que es anticuado
         // si se quiere volver a poner modificar nambien en el estilo
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         // Creacion de la vista del boton
         BottomNavigationView navView = findViewById(R.id.nav_view);
