@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.rutinasGrupos.rutinas.RutinasRU">
+    tools:context=".ui.rutinasGrupos.RutinasGRFragment"
+    android:background="#00DC0C0C">
 
     <TextView
-        android:id="@+id/titulo_ru"
+        android:id="@+id/texthome"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"
-        android:text="Parte del Cuerpo"
+        android:text="@string/title_rutinas"
         android:textAlignment="center"
         android:textColor="@color/colorLetras"
         android:textSize="40sp"/>
 
     <LinearLayout
-        android:layout_gravity="center"
+        android:id="@+id/containergruprut"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -29,11 +30,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_gravity="center"
-            android:id="@+id/lista_rows_ru"
-            android:layout_width="match_parent"
+            android:id="@+id/lista_grupos"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
+
+
 
 </FrameLayout>

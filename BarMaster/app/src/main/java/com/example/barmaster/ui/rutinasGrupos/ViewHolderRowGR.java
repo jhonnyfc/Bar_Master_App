@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 
-public class ViewHoldRowGR extends RecyclerView.ViewHolder {
+public class ViewHolderRowGR extends RecyclerView.ViewHolder {
     public TextView grupName;
     public ImageView grupFoto;
     private ProgressBar mProgress;
 
-    public ViewHoldRowGR(View itemView, final RecyViwAdapterGR.OnItemClickListener listener) {
+    public ViewHolderRowGR(View itemView, final RecyViwAdapterGR.OnItemClickListener listener) {
         super(itemView);
         grupName = itemView.findViewById(R.id.textoCardRow);
         grupFoto = itemView.findViewById(R.id.fotoCardRow);

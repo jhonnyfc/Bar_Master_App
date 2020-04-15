@@ -39,20 +39,17 @@ public class RecyViwAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHold
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ViewHolderRowCM myViewHolder = null;
         myContext = parent.getContext();
 
         if (viewType == VIEW_TYPE_ITEM) {
             LayoutInflater inflater = LayoutInflater.from(myContext);
 
             View v1 = inflater.inflate(R.layout.z_rowcard_coment, parent,false);
-            myViewHolder = new ViewHolderRowCM(v1,myCLickListener,myCLickListenerDob);
+            return new ViewHolderRowCM(v1,myCLickListener,myCLickListenerDob);
         } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.x_item_loading ,parent, false);
+            View view = LayoutInflater.from(myContext).inflate(R.layout.x_item_loading ,parent, false);
             return new LoadingViewHolder(view);
         }
-
-        return myViewHolder;
     }
 
     @Override

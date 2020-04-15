@@ -15,7 +15,7 @@
         android:id="@+id/navigation_rutinas"
         android:name="com.example.barmaster.ui.rutinasGrupos.RutinasGRFragment"
         android:label="@string/title_rutinas"
-        tools:layout="@layout/rutinas_fragment" />
+        tools:layout="@layout/grupos_rutinas_fragment" />
 
     <fragment
         android:id="@+id/navigation_comunidad"

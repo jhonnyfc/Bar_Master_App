@@ -50,7 +50,7 @@
                 android:textSize="20dp"></TextView>
 
             <EditText
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:id="@+id/passwordvali"
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"

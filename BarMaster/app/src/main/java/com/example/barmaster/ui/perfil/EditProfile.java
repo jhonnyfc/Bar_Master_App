@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+
 import com.example.barmaster.Controlador_Activity;
 import com.example.barmaster.R;
 import com.example.barmaster.sharedData.MyAppDataControler;

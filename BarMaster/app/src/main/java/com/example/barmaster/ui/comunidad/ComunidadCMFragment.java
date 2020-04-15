@@ -54,7 +54,6 @@ public class ComunidadCMFragment extends Fragment {
         View root = inflater.inflate(R.layout.comunidad_fragment, container, false);
 
         myRecyListCardsCM = new ArrayList<>();
-//        myRecyListCardsCM.add(0,new Post(null,null,null,null,null,null,null,null));// setear un row por defecto creadndo pos a null maybe
         myRecyListCardsCM.add(null);// setear un row por defecto creadndo pos a null maybe
 
         myRecyclerViewCM = root.findViewById(R.id.lista_post);

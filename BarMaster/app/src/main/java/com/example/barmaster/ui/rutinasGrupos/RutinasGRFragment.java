@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,16 +26,12 @@ public class RutinasGRFragment extends Fragment {
 
     private RutinasGRViewModel mViewModel;
 
-    private ArrayList<GrupoMuscularRutina> myRecyListCards;
-    private RecyclerView myRecyclerView;
-    private RecyViwAdapterGR myAdapterGr;
-    private RecyclerView.LayoutManager myLayoutManager;
+    private ArrayList<GrupoMuscularRutina> myRecyListCardsGR;
+    private RecyclerView myRecyclerViewGR;
+    private RecyViwAdapterGR myAdapterGR;
+    private RecyclerView.LayoutManager myLayoutManagerGR;
 
     private Integer valUser;
-
-    private ProgressBar myProgrssBar;
-
-    private LinearLayout miContainer;
 
     public static RutinasGRFragment newInstance() {
         return new RutinasGRFragment();
@@ -46,7 +40,7 @@ public class RutinasGRFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //mViewModel = ViewModelProviders.of(this).get(RutinasViewModel.class);
-        View rootOut = inflater.inflate(R.layout.rutinas_fragment, container, false);
+        View rootOut = inflater.inflate(R.layout.grupos_rutinas_fragment, container, false);
 
         MyAppDataControler controler = new MyAppDataControler(getContext());
         if (controler.exsitenDatos()){
@@ -54,27 +48,21 @@ public class RutinasGRFragment extends Fragment {
         }else {
             valUser = 6;
         }
+        myRecyListCardsGR = new ArrayList<>();
+        myRecyListCardsGR.add(null);
 
-        miContainer = rootOut.findViewById(R.id.containergruprut);
+        myRecyclerViewGR = rootOut.findViewById(R.id.lista_grupos);
+        myRecyclerViewGR.setHasFixedSize(true);
+        myLayoutManagerGR = new LinearLayoutManager(getActivity());
+        myAdapterGR = new RecyViwAdapterGR(myRecyListCardsGR);
 
-        myProgrssBar = rootOut.findViewById(R.id.loadmore_progress);
-        myProgrssBar.setVisibility(View.VISIBLE);
+        myRecyclerViewGR.setLayoutManager(myLayoutManagerGR);
+        myRecyclerViewGR.setAdapter(myAdapterGR);
 
-        myRecyListCards = new ArrayList<>();
-        myRecyListCards.add(new GrupoMuscularRutina( null,"Loading..."));
-
-        myRecyclerView = rootOut.findViewById(R.id.lista_grupos);
-        myRecyclerView.setHasFixedSize(true);
-        myLayoutManager = new LinearLayoutManager(getActivity());
-        myAdapterGr = new RecyViwAdapterGR(myRecyListCards);
-
-        myRecyclerView.setLayoutManager(myLayoutManager);
-        myRecyclerView.setAdapter(myAdapterGr);
-
-        myAdapterGr.setOnItemClickListener(new RecyViwAdapterGR.OnItemClickListener() {
+        myAdapterGR.setOnItemClickListener(new RecyViwAdapterGR.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                //Crear un Star activity segun la posicion de la que nos de
+                //Crear un Star Fragement segun la posicion de la que nos de
             }
         });
 
@@ -84,10 +72,6 @@ public class RutinasGRFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //mViewModel = ViewModelProviders.of(this).get(RutinasViewModel.class);
-        // TODO: Use the ViewModel
-        myRecyListCards.remove(0);
-        myAdapterGr.notifyItemRemoved(0);
         getElemntCardBBDDAllFastONE("GrupoMuscular");
     }
 
@@ -97,46 +81,13 @@ public class RutinasGRFragment extends Fragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                miContainer.setVisibility(View.VISIBLE);
-                for (int i = 0; i < valUser; i++) {
-                    String id_img = objects.get(i).get("im_code").toString();
-                    myRecyListCards.add(i,new GrupoMuscularRutina(getUrlFromGrupFoto(id_img), objects.get(i).get("grup_name").toString()));
-                    myAdapterGr.notifyItemInserted(i);
+                myRecyListCardsGR.remove(0);
+                myAdapterGR.notifyItemRemoved(0);
+                for (ParseObject ob: objects){
+                    myRecyListCardsGR.add(new GrupoMuscularRutina(ob.get("im_code").toString(), ob.get("grup_name").toString()));
+                    myAdapterGR.notifyItemInserted(myRecyListCardsGR.size()-1);
                 }
-                myProgrssBar.setVisibility(View.INVISIBLE);
             }
         });
     }
-
-    public static String getUrlFromGrupFoto(String idFile) {
-        String tableName = "FotosAll";
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(tableName);
-
-        query.whereEqualTo("fotoName",idFile);
-
-        try {
-            return query.getFirst().getParseFile("picture").getUrl();
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-//    public void actualizaRows(){
-//        MyAppDataControler controler = new MyAppDataControler(getContext());
-//        if (controler.exsitenDatos()){
-//            if (valUser != 7){
-//                valUser = 7;
-//                myRecyListCards.add(valUser-1,getElemntCardBBDD(valUser-1,"grup_name"));
-//                myAdapterGr.notifyItemInserted(valUser-1);
-//            }
-//        }else {
-//            if (valUser != 6){
-//                valUser = 6;
-//                myRecyListCards.remove(valUser);
-//                myAdapterGr.notifyItemRemoved(valUser);
-//            }
-//        }
-//    }
 }

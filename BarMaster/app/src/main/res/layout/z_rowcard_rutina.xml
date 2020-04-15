@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#000000">
+
+            <LinearLayout
+                android:layout_marginTop="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/foto_ru"
+                    android:layout_width="350dp"
+                    android:layout_height="262.5dp"
+                    android:src="@drawable/fondo2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:layout_gravity="bottom"
+                        android:textColor="@color/colorLetras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NombreTrain"
+                        android:id="@+id/nombre_rutina_ru"></TextView>
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:textSize="15sp"
+                        android:layout_gravity="bottom"
+                        android:textColor="@color/colorLetras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Duracion"
+                        android:id="@+id/duracion_ru"></TextView>
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:layout_gravity="bottom"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorLetras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TrainName"
+                        android:id="@+id/nametrain_post"></TextView>
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Aqui su descripcion maximo 120 caracteres"
+                        android:textColor="@color/colorLetras"
+                        android:id="@+id/descrip_ru"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
