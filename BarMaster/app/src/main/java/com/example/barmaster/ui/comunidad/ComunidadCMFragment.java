@@ -39,7 +39,7 @@ public class ComunidadCMFragment extends Fragment {
 
     private ArrayList<Post> myRecyListCardsCM;
     private RecyclerView myRecyclerViewCM;
-    private RecyViwAdapterCM myAdapterCM;
+    private RecyViewAdapterCM myAdapterCM;
     private RecyclerView.LayoutManager myLayoutManagerCM;
 
     private FloatingActionButton myFloatButtom;
@@ -59,12 +59,12 @@ public class ComunidadCMFragment extends Fragment {
         myRecyclerViewCM = root.findViewById(R.id.lista_post);
         myRecyclerViewCM.setHasFixedSize(true);
         myLayoutManagerCM = new LinearLayoutManager(getActivity());
-        myAdapterCM = new RecyViwAdapterCM(myRecyListCardsCM);
+        myAdapterCM = new RecyViewAdapterCM(myRecyListCardsCM);
 
         myRecyclerViewCM.setLayoutManager(myLayoutManagerCM);
         myRecyclerViewCM.setAdapter(myAdapterCM);
 
-        myAdapterCM.setOnItemClickListener(new RecyViwAdapterCM.OnItemClickListener() {
+        myAdapterCM.setOnItemClickListener(new RecyViewAdapterCM.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
             }
@@ -74,7 +74,7 @@ public class ComunidadCMFragment extends Fragment {
         if (controler.exsitenDatos() == true){
 
             // Boton: Se permite que se de like solo si esta registrado
-            myAdapterCM.setOnDoulbeClickListener(new RecyViwAdapterCM.DoubleClickListener() {
+            myAdapterCM.setOnDoulbeClickListener(new RecyViewAdapterCM.DoubleClickListener() {
                 @Override
                 public void onDoubleClick(final int position) {
                 if (myRecyListCardsCM.get(position).getLikesId().equals("0")){//El post nunca a recivido un like
@@ -140,6 +140,7 @@ public class ComunidadCMFragment extends Fragment {
             });
         }
         loadPostIni();
+
         return root;
     }
 
@@ -167,6 +168,7 @@ public class ComunidadCMFragment extends Fragment {
                 }else{
                     Toast.makeText(getContext(), "Error al cargar datos", Toast.LENGTH_SHORT).show();
                 }
+                isLoading = false;
             }
         });
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
                 <ImageView
-                    android:id="@+id/foto_ru"
+                    android:id="@+id/foto_eje"
                     android:layout_width="350dp"
                     android:layout_height="262.5dp"
                     android:src="@drawable/pruebados"/>
@@ -44,8 +44,8 @@
                         android:textColor="@color/colorLetras"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NombreTrain"
-                        android:id="@+id/nombre_rutina_ru"></TextView>
+                        android:text="NombreEjercicio"
+                        android:id="@+id/nombre_rutina_eje"></TextView>
 
                     <TextView
                         android:layout_marginTop="12dp"
@@ -54,8 +54,8 @@
                         android:textColor="@color/colorLetras"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Duracion"
-                        android:id="@+id/duracion_ru"></TextView>
+                        android:text="Seccion Muscular"
+                        android:id="@+id/duracion_eje"></TextView>
 
                     <TextView
                         android:layout_marginTop="12dp"
@@ -65,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nivel"
-                        android:id="@+id/nivel_tra_ru"></TextView>
+                        android:id="@+id/nivel_tra_eje"></TextView>
 
                     <TextView
                         android:layout_marginTop="12dp"
@@ -74,7 +74,7 @@
                         android:textSize="15sp"
                         android:text="Aqui su descripcion maximo 120 caracteres"
                         android:textColor="@color/colorLetras"
-                        android:id="@+id/descrip_ru"></TextView>
+                        android:id="@+id/descrip_eje"></TextView>
             </LinearLayout>
 
         </LinearLayout>

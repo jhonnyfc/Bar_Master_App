@@ -1,21 +1,22 @@
-package com.example.barmaster.ui.rutinasGrupos;
+package com.example.barmaster.ui.home;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 
-public class ViewHolderRowGR extends RecyclerView.ViewHolder {
-    public TextView grupName;
-    public ImageView grupFoto;
+public class ViewHolderRowHM extends RecyclerView.ViewHolder{
+    public ImageView fotoEjer;
+    public TextView ejerName;
 
-    public ViewHolderRowGR(View itemView, final RecyViewAdapterGR.OnItemClickListener listener) {
+    public ViewHolderRowHM(@NonNull View itemView, final RecyViewAdapterHM.OnItemClickListener listener) {
         super(itemView);
-        grupName = itemView.findViewById(R.id.textoCardRow);
-        grupFoto = itemView.findViewById(R.id.fotoCardRow);
+        fotoEjer = itemView.findViewById(R.id.foto_home);
+        ejerName = itemView.findViewById(R.id.namejer_home);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

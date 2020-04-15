@@ -19,7 +19,7 @@ public class ViewHolderRowCM extends RecyclerView.ViewHolder{
     public TextView trainNanem;
     public TextView trainDuracion;
 
-    public ViewHolderRowCM(@NonNull View itemView, final RecyViwAdapterCM.OnItemClickListener listener, final RecyViwAdapterCM.DoubleClickListener listenerdob) {
+    public ViewHolderRowCM(@NonNull View itemView, final RecyViewAdapterCM.OnItemClickListener listener, final RecyViewAdapterCM.DoubleClickListener listenerdob) {
         super(itemView);
         niknName = itemView.findViewById(R.id.namepost);
         fotTrain = itemView.findViewById(R.id.fotopost);

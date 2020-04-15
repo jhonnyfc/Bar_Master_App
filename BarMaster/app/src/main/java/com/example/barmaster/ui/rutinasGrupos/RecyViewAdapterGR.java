@@ -20,7 +20,7 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 
-public class RecyViwAdapterGR extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyViewAdapterGR extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final String tableFotos = "FotosAll";
 
     private final int VIEW_TYPE_ITEM = 0;
@@ -30,7 +30,7 @@ public class RecyViwAdapterGR extends RecyclerView.Adapter<RecyclerView.ViewHold
     private ArrayList<GrupoMuscularRutina> mylistOfRows;
     private OnItemClickListener myListener;
 
-    public RecyViwAdapterGR(ArrayList<GrupoMuscularRutina> listaIn) {
+    public RecyViewAdapterGR(ArrayList<GrupoMuscularRutina> listaIn) {
         mylistOfRows = listaIn;
     }
 

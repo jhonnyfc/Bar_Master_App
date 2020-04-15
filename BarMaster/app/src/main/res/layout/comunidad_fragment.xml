@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,19 +31,20 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_gravity="center"
             android:id="@+id/lista_post"
-            android:layout_width="match_parent"
+            android:layout_width="351dp"
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:visibility="gone"
+
         android:layout_marginRight="15dp"
         android:layout_marginBottom="75dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
-        app:borderWidth="0dp"
+        app:borderWidth="1dp"
+        app:backgroundTint="@color/colorLetras"
         app:fabSize="normal"
         android:backgroundTint="@color/Black"
         android:src="@drawable/ic_add_black_24dp"

@@ -28,7 +28,7 @@ public class RutinasGRFragment extends Fragment {
 
     private ArrayList<GrupoMuscularRutina> myRecyListCardsGR;
     private RecyclerView myRecyclerViewGR;
-    private RecyViwAdapterGR myAdapterGR;
+    private RecyViewAdapterGR myAdapterGR;
     private RecyclerView.LayoutManager myLayoutManagerGR;
 
     private Integer valUser;
@@ -54,12 +54,12 @@ public class RutinasGRFragment extends Fragment {
         myRecyclerViewGR = rootOut.findViewById(R.id.lista_grupos);
         myRecyclerViewGR.setHasFixedSize(true);
         myLayoutManagerGR = new LinearLayoutManager(getActivity());
-        myAdapterGR = new RecyViwAdapterGR(myRecyListCardsGR);
+        myAdapterGR = new RecyViewAdapterGR(myRecyListCardsGR);
 
         myRecyclerViewGR.setLayoutManager(myLayoutManagerGR);
         myRecyclerViewGR.setAdapter(myAdapterGR);
 
-        myAdapterGR.setOnItemClickListener(new RecyViwAdapterGR.OnItemClickListener() {
+        myAdapterGR.setOnItemClickListener(new RecyViewAdapterGR.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 //Crear un Star Fragement segun la posicion de la que nos de

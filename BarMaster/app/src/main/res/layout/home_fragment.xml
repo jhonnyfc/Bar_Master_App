@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragmentHM">
 
     <TextView
         android:id="@+id/texthome"
@@ -14,5 +15,35 @@
         android:textAlignment="center"
         android:textColor="@color/colorLetras"
         android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_gravity="center"
+            android:id="@+id/lista_eje_home"
+            android:layout_width="340dp"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_marginRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        android:backgroundTint="@color/Black"
+        android:src="@drawable/ic_add_black_24dp"
+        android:id="@+id/fbotadd_home"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>

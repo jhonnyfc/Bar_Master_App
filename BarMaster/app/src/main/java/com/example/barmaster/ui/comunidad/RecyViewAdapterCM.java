@@ -21,7 +21,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class RecyViwAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class RecyViewAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     final private String LikesTable = "Likes";
 
     private final int VIEW_TYPE_ITEM = 0;
@@ -32,7 +32,7 @@ public class RecyViwAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHold
     private OnItemClickListener myCLickListener;
     private DoubleClickListener myCLickListenerDob;
 
-    public RecyViwAdapterCM(ArrayList<Post> listaIn) {
+    public RecyViewAdapterCM(ArrayList<Post> listaIn) {
         myListOfRows = listaIn;
     }
 
@@ -44,7 +44,7 @@ public class RecyViwAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (viewType == VIEW_TYPE_ITEM) {
             LayoutInflater inflater = LayoutInflater.from(myContext);
 
-            View v1 = inflater.inflate(R.layout.z_rowcard_coment, parent,false);
+            View v1 = inflater.inflate(R.layout.z_rowcard_post, parent,false);
             return new ViewHolderRowCM(v1,myCLickListener,myCLickListenerDob);
         } else {
             View view = LayoutInflater.from(myContext).inflate(R.layout.x_item_loading ,parent, false);

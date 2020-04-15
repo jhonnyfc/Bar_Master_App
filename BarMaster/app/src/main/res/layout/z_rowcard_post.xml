@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
                         android:id="@+id/fotopost"
                         android:layout_width="350dp"
                         android:layout_height="262.5dp"
-                        android:src="@drawable/fondo2"
+                        android:src="@drawable/pruebados"
                         android:foreground="@drawable/badheart"/>
             </LinearLayout>
 
