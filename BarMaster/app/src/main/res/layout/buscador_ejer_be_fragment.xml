@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.HomeFragmentHM">
+    tools:context=".ui.buscadorEjer.BuscadorEjerBE_Fragment">
 
     <TextView
-        android:id="@+id/texthome"
+        android:id="@+id/text_busca"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_marginTop="15dp"
-        android:text="@string/app_name"
+        android:text="Buscador"
         android:textAlignment="center"
         android:textColor="@color/colorLetras"
         android:textSize="40sp" />
@@ -26,24 +25,23 @@
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:orientation="vertical">
+        <LinearLayout
+            android:background="@color/Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/spinner_list_busca"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/colorLetras"
+                android:layout_height="wrap_content"></Spinner>
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_gravity="center"
-            android:id="@+id/lista_eje_home"
-            android:layout_width="340dp"
+            android:id="@+id/lista_eje_busca"
+            android:layout_width="310dp"
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_marginRight="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        android:backgroundTint="@color/Black"
-        android:src="@drawable/ic_add_black_24dp"
-        android:id="@+id/buscbot_home"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>

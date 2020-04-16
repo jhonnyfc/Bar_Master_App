@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 import com.example.barmaster.models.Ejercicio;
+import com.example.barmaster.ui.buscadorEjer.BuscadorEjerBE_Fragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -33,6 +36,8 @@ public class HomeFragmentHM extends Fragment {
     private RecyclerView myRecyclerViewHM;
     private RecyViewAdapterHM myAdapterHM;
     private RecyclerView.LayoutManager myLayoutManagerHM;
+
+    private FloatingActionButton myFloatinBot;
 
     private Integer radius = 1400;
     private Integer peek = 110;
@@ -70,6 +75,18 @@ public class HomeFragmentHM extends Fragment {
             }
         });
 
+        myFloatinBot = rootOut.findViewById(R.id.buscbot_home);
+        myFloatinBot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment someFragment = new BuscadorEjerBE_Fragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, someFragment ); // give your fragment container id in first parameter
+                ((FragmentTransaction) transaction).addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
+            }
+        });
+
         return rootOut;
     }
 
@@ -86,6 +103,7 @@ public class HomeFragmentHM extends Fragment {
             query.orderByAscending("id_ej").setLimit(DownBuffer);
         else
             query.orderByAscending("id_ej").setLimit(DownBuffer).setSkip(myRecyListCardsHM.size());
+
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
