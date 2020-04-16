@@ -77,10 +77,10 @@ public class PostCreator extends Fragment {
             @Override
             public void onClick(View v) {
                 //Comporbar si todos los datos estan rellenados y crear el objeto y subrirlo
-                if (FOTO_ASIGNADA == -1 || myTextNameRoutine.getText().toString().length() == 0 ||
+                if (FOTO_ASIGNADA == 0 || myTextNameRoutine.getText().toString().length() == 0 ||
                         myMinutsTrain.getText().toString().length() == 0 || myTextComment.getText().toString().length() == 0) {
-                    if (FOTO_ASIGNADA == -1)
-                        Toast.makeText(getContext(), "Foto Seleccionada", Toast.LENGTH_SHORT).show();
+                    if (FOTO_ASIGNADA == 0)
+                        Toast.makeText(getContext(), "Foto No Seleccionada", Toast.LENGTH_SHORT).show();
                     if (myTextNameRoutine.getText().toString().length() == 0)
                         Toast.makeText(getContext(), "Falta Nombre de la rutina", Toast.LENGTH_SHORT).show();
                     if (myMinutsTrain.getText().toString().length() == 0)

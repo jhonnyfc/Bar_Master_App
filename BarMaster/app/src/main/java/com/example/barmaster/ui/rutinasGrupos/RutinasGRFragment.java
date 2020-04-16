@@ -80,11 +80,11 @@ public class RutinasGRFragment extends Fragment {
         query.orderByAscending("id_gr");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
+            public void done(List<ParseObject> ob, ParseException e) {
                 myRecyListCardsGR.remove(0);
                 myAdapterGR.notifyItemRemoved(0);
-                for (ParseObject ob: objects){
-                    myRecyListCardsGR.add(new GrupoMuscularRutina(ob.get("im_code").toString(), ob.get("grup_name").toString()));
+                for (int i = 0; i<valUser; i++){
+                    myRecyListCardsGR.add(new GrupoMuscularRutina(ob.get(i).get("im_code").toString(), ob.get(i).get("grup_name").toString()));
                     myAdapterGR.notifyItemInserted(myRecyListCardsGR.size()-1);
                 }
             }
