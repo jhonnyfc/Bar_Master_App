@@ -37,8 +37,7 @@
                         android:id="@+id/fotopost"
                         android:layout_width="350dp"
                         android:layout_height="262.5dp"
-                        android:src="@drawable/pruebados"
-                        android:foreground="@drawable/badheart"/>
+                        android:src="@drawable/pruebados"/>
             </LinearLayout>
 
             <LinearLayout

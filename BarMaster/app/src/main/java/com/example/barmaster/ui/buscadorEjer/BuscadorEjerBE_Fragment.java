@@ -12,11 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barmaster.R;
 import com.example.barmaster.models.Ejercicio;
+import com.example.barmaster.ui.ejercicioshow.EjercicioShow;
 import com.example.barmaster.ui.home.RecyViewAdapterHM;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -86,8 +88,15 @@ public class BuscadorEjerBE_Fragment extends Fragment {
                 myAdapterBE.setOnItemClickListener(new RecyViewAdapterHM.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        //LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
-                        //LLamar a la ventan en la que se muestra la el ejercicio con su descricion
+                        Fragment someFragment = new EjercicioShow();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("view","busc");
+                        bundle.putString("idEjer",myRecyListCardsBE.get(position).getIdEjer());
+                        someFragment.setArguments(bundle);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, someFragment ); // give your fragment container id in first parameter
+                        ((FragmentTransaction) transaction).addToBackStack(null);  // if written, this transaction will be added to backstack
+                        transaction.commit();
                     }
                 });
                 getElemntCardBBDDAllFastONE(position);

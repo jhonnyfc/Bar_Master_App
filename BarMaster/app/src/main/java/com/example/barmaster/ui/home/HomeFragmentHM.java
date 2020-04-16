@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.barmaster.R;
 import com.example.barmaster.models.Ejercicio;
 import com.example.barmaster.ui.buscadorEjer.BuscadorEjerBE_Fragment;
+import com.example.barmaster.ui.ejercicioshow.EjercicioShow;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -72,6 +73,15 @@ public class HomeFragmentHM extends Fragment {
             @Override
             public void onItemClick(int position) {
                 //Crear una vista en la que se uetre el ejercio con su descripcion
+                Fragment someFragment = new EjercicioShow();
+                Bundle bundle = new Bundle();
+                bundle.putString("view","hm");
+                bundle.putString("idEjer",myRecyListCardsHM.get(position).getIdEjer());
+                someFragment.setArguments(bundle);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, someFragment ); // give your fragment container id in first parameter
+                ((FragmentTransaction) transaction).addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
             }
         });
 

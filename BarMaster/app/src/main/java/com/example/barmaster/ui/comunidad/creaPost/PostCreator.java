@@ -45,6 +45,7 @@ public class PostCreator extends Fragment {
     private EditText myTextComment;
     private String myIdLikes;
     private FloatingActionButton myBotonFlo;
+    private FloatingActionButton myGobackFlo;
     private Uri mifoto;
 
     private PostCreatorViewModel mViewModel;
@@ -88,25 +89,28 @@ public class PostCreator extends Fragment {
                         Toast.makeText(getContext(), "Introduzca una Descripcion", Toast.LENGTH_SHORT).show();
                 } else {
                     guardaDatos(TableName);
-
-                    Fragment someFragment = new ComunidadCMFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.nav_host_fragment, someFragment ); // give your fragment container id in first parameter
-                    ((FragmentTransaction) transaction).addToBackStack(null);  // if written, this transaction will be added to backstack
-                    transaction.commit();
+                    goBack();
                 }
             }
         });
 
+        myGobackFlo = root.findViewById(R.id.goback_post);
+        myGobackFlo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
         return root;
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = ViewModelProviders.of(this).get(PostCreatorViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
+    public void goBack(){
+        Fragment someFragment = new ComunidadCMFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, someFragment ); // give your fragment container id in first parameter
+        ((FragmentTransaction) transaction).addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
 
     public void guardaDatos(final String TableName){
         final ParseFile myFotoPost = new ParseFile("postfoto.jpg",getByteFromUri(mifoto));

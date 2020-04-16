@@ -43,7 +43,7 @@
         app:borderWidth="0dp"
         app:fabSize="mini"
         android:backgroundTint="@color/Black"
-        android:src="@drawable/ic_add_black_24dp"
+        android:src="@drawable/ic_search_black_24dp"
         android:id="@+id/buscbot_home"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>

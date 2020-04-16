@@ -7,6 +7,12 @@ import android.util.Log;
 import com.example.barmaster.models.Usuario;
 import com.parse.ParseUser;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class MyAppDataControler {
     private final String DATA_FNAME = "credenciales";
@@ -30,7 +36,7 @@ public class MyAppDataControler {
     }
 
     public boolean previouslyStarted(){
-        prefs = myContext.getSharedPreferences(PREFS_NAME, 0);
+        prefs = myContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         if (prefs.getBoolean("my_first_time", true)) {
             //the app is being launched for first time, do something
@@ -41,6 +47,32 @@ public class MyAppDataControler {
             prefs.edit().putBoolean("my_first_time", false).commit();
             return false;
         }else{
+            return true;
+        }
+    }
+
+    public boolean previouslyStartedDayNews() {
+        try {
+            Date date = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            String strDateNow = dateFormat.format(date);
+
+            prefs = myContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            String strDataPrev = prefs.getString("ulti_vista_news",null);
+            if (strDataPrev == null){
+                prefs.edit().putString("ulti_vista_news",strDateNow).commit();
+                return false;
+            }else{
+                Integer diff = Math.round( (dateFormat.parse(strDateNow).getTime() - dateFormat.parse(strDataPrev).getTime())/(60*1000) );
+                if (diff < 35){//si ha pasado menos de estos minutos no se muestra la alerta y no se actualiza la hora
+                    return true;
+                }else{
+                    prefs.edit().putString("ulti_vista_news",strDateNow).commit();
+                    return false;
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
             return true;
         }
     }

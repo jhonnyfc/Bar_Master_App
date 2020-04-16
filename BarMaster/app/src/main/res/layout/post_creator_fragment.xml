@@ -113,6 +113,20 @@
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        app:borderWidth="0dp"
+        app:backgroundTint="@color/colorLetras"
+        app:fabSize="normal"
+        android:backgroundTint="@color/Black"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:id="@+id/goback_post"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_marginRight="15dp"
         android:layout_marginBottom="75dp"
         android:layout_width="wrap_content"

@@ -25,6 +25,7 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,15 +65,15 @@ public class ComunidadCMFragment extends Fragment {
         myRecyclerViewCM.setLayoutManager(myLayoutManagerCM);
         myRecyclerViewCM.setAdapter(myAdapterCM);
 
-        myAdapterCM.setOnItemClickListener(new RecyViewAdapterCM.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-            }
-        });
+//        myAdapterCM.setOnItemClickListener(new RecyViewAdapterCM.OnItemClickListener() {
+        // SE  PODRI HACER UNA VISTA PARA PODER VER EL PERFIL DE ESA PERSONA
+//            @Override
+//            public void onItemClick(int position) {
+//            }
+//        });
 
         final MyAppDataControler controler = new MyAppDataControler(getContext());
         if (controler.exsitenDatos() == true){
-
             // Boton: Se permite que se de like solo si esta registrado
             myAdapterCM.setOnDoulbeClickListener(new RecyViewAdapterCM.DoubleClickListener() {
                 @Override
@@ -88,12 +89,18 @@ public class ComunidadCMFragment extends Fragment {
                             ParseObject newLike = new ParseObject(LikesTable);
                             newLike.put("likeOfPost",object.getObjectId());
                             newLike.put("idUser",controler.getMyData().getNickName());
-                            newLike.saveInBackground();
+                            newLike.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    myAdapterCM.notifyItemChanged(position);
+                                }
+                            });
                         }
                     });
                 } else {
                     ParseQuery<ParseObject> misPostLikes = new ParseQuery(LikesTable);
-                    misPostLikes.whereEqualTo("likeOfPost",myRecyListCardsCM.get(position).getLikesId()).whereEqualTo("idUser",controler.getMyData().getNickName());
+                    misPostLikes.whereEqualTo("likeOfPost",myRecyListCardsCM.get(position).getLikesId())
+                            .whereEqualTo("idUser",controler.getMyData().getNickName());
                     misPostLikes.countInBackground(new CountCallback() {
                         @Override
                         public void done(int count, ParseException e) {
@@ -111,12 +118,16 @@ public class ComunidadCMFragment extends Fragment {
                                         });
                                     }
                                 });
-                            } else {//Crear el like
+                            } else {//Crear el like con el id del usuario que lo ha introducido
                                 ParseObject newLike = new ParseObject(LikesTable);
                                 newLike.put("likeOfPost",myRecyListCardsCM.get(position).getLikesId());
                                 newLike.put("idUser",controler.getMyData().getNickName());
-                                newLike.saveInBackground();
-                                myAdapterCM.notifyItemChanged(position);
+                                newLike.saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        myAdapterCM.notifyItemChanged(position);
+                                    }
+                                });
                             }
                         }
                     });

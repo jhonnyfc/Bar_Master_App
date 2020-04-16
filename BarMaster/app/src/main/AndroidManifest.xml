@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".bbdd.DataBaseACC"
@@ -17,23 +17,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name=".ui.perfil.ValidacionKey"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.perfil.EditProfile"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.CreratAccount"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.InicioSesion"
-            android:screenOrientation="portrait"/>
-
+        <activity android:name=".ui.News"
+            android:screenOrientation="portrait" ></activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".ui.perfil.ValidacionKey"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.perfil.EditProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CreratAccount"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.InicioSesion"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Controlador_Activity"
             android:label="@string/app_name"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

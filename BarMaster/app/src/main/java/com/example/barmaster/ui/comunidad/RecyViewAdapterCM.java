@@ -18,7 +18,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class RecyViewAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -131,7 +133,13 @@ public class RecyViewAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public void setTime(ViewHolderRowCM holder,Post currentItem){
         Integer timepoDias = Math.round( (new Date().getTime() - currentItem.getFecha().getTime())/(24*60*60*1000) );
-        if (timepoDias == 1)
+        if (timepoDias > 28){
+            Calendar cal = Calendar.getInstance();
+            String month = new SimpleDateFormat("MMMM").format(currentItem.getFecha().getTime());
+            String dia = new SimpleDateFormat("dd").format(currentItem.getFecha().getTime());
+            String año = new SimpleDateFormat("yyy").format(currentItem.getFecha().getTime());
+            holder.timeDate.setText(dia+ " " + month + " " + año);
+        }else if (timepoDias == 1)
             holder.timeDate.setText(timepoDias.toString()+" day ago");
         else if (timepoDias > 1)
             holder.timeDate.setText(timepoDias.toString()+" days ago");
@@ -140,8 +148,8 @@ public class RecyViewAdapterCM extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (timepoHoras == 1)
                 holder.timeDate.setText(timepoHoras.toString()+" hour ago");
             else if (timepoHoras > 1)
-                holder.timeDate.setText(timepoHoras.toString()+" hours ago");
-            else{
+                holder.timeDate.setText(timepoHoras.toString() + " hours ago");
+             else{
                 Integer timepoMins = Math.round( (new Date().getTime() - currentItem.getFecha().getTime())/(60*1000) );
                 if (timepoMins == 1)
                     holder.timeDate.setText(timepoMins.toString()+" minute ago");

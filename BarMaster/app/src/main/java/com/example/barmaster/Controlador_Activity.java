@@ -11,9 +11,14 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.barmaster.sharedData.MyAppDataControler;
 import com.example.barmaster.ui.InicioSesion;
+import com.example.barmaster.ui.News;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 public class Controlador_Activity extends AppCompatActivity {
+    private final String tableName = "News";
     private MyAppDataControler myPrefrences;
 
     @Override
@@ -21,10 +26,20 @@ public class Controlador_Activity extends AppCompatActivity {
         super.onStart();
 
         myPrefrences = new MyAppDataControler(this);
-        if (myPrefrences.previouslyStarted() == false){
+        if (!myPrefrences.previouslyStarted()){
             //Si es la primera vez que abre la app se le mandara a la pagina de registrar/iniicar sesion
             startActivity(new Intent(this, InicioSesion.class));
+        } else if (!myPrefrences.previouslyStartedDayNews()){
+            ParseQuery<ParseObject> misPostLikes = new ParseQuery(tableName);
+            try {
+                Integer numbre = misPostLikes.count();
+                if (numbre > 0)
+                    startActivity(new Intent(this, News.class));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @Override

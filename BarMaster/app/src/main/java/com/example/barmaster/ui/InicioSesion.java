@@ -31,7 +31,6 @@ public class InicioSesion extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
 
-
         confirmarBt = findViewById(R.id.siginini);
         registrarseBt = findViewById(R.id.creataccountini);
         forgotPassBt = findViewById(R.id.forgotpassini);
