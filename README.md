@@ -1,10 +1,7 @@
 # Bar_Master_App
 
-- https://medium.com/@alhaythamapps/android-listview-with-cardview-f60eeeb30208
-- https://www.codota.com/code/java/methods/android.content.SharedPreferences/getBoolean
-- https://www.youtube.com/watch?v=9Ye3j1c7pS4
-- https://www.youtube.com/watch?v=cduqZli6CHE
-- https://docs.parseplatform.org/android/guide/
-- https://stackoverflow.com/questions/39596994/unable-to-save-data-on-heroku-in-android-studio
-- https://www.programcreek.com/java-api-examples/?api=com.parse.ParseQuery
-- http://docs.parseplatform.org/rest/guide/#files
+App que tiene como finalidad el entrenamiento físico mediante la calistenia y ademas se ha integrado
+la funcionalidad de poner post basado en instagram.
+
+Esta app se ha desarollado sobre el api 29, se puede ejecutar en dispositivos con versiones de android
+correspondientes a el api 28 y 29.
