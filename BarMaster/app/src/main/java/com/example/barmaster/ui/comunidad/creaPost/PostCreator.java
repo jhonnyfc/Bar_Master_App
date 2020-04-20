@@ -191,7 +191,7 @@ public class PostCreator extends Fragment {
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
                     CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
-                            .setAspectRatio(1,1)
+                            .setAspectRatio(4,3)
                             .start(getContext(),PostCreator.this);
                 } else {
                     // permission denied, boo! Disable the

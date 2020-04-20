@@ -55,7 +55,20 @@ public class CreratAccount extends AppCompatActivity implements View.OnClickList
         switch (view.getId() /*to get clicked view id**/) {
             case R.id.confirmarreg:
                 //Validar usuario
-                confirmar();
+                if (nickInTx.getText().length() == 0 || nameInTx.getText().length() == 0 || faminameInTx.length() == 0 ||
+                    correoInTx.getText().length() == 0 || passwordInTx.getText().length() < 5){
+                    if (nickInTx.getText().length() == 0)
+                        Toast.makeText(this, "NickName Empty", Toast.LENGTH_SHORT).show();
+                    if (nameInTx.getText().length() == 0)
+                        Toast.makeText(this, "Name Empty", Toast.LENGTH_SHORT).show();
+                    if (faminameInTx.getText().length() == 0)
+                        Toast.makeText(this, "FamilyName Empty", Toast.LENGTH_SHORT).show();
+                    if (correoInTx.getText().length() == 0)
+                        Toast.makeText(this, "Email Empty", Toast.LENGTH_SHORT).show();
+                    if (passwordInTx.getText().length() < 5)
+                        Toast.makeText(this, "La contraseña debe tener al menos 5 digitos", Toast.LENGTH_SHORT).show();
+                } else
+                    confirmar();
                 break;
             case R.id.skipreg:
                 //Saltar log ventan e ir el inicio
