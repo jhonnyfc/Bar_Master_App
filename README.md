@@ -7,3 +7,5 @@ Esta app se ha desarollado sobre el api 29, se puede ejecutar en dispositivos co
 correspondientes a el api 28 y 29.
 
 Para el servicio de basse de datos de ha utilizado el tipo parse-server de heroku y mongodb.
+
+Autor: https://github.com/jhonnyfc
